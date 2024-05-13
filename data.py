@@ -1,5 +1,4 @@
 from sklearn.datasets import load_breast_cancer
-# from keras.datasets import cifar10
 import numpy as np
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
@@ -8,7 +7,8 @@ from sklearn.preprocessing import StandardScaler
 def load_numeric_data():
     def clean_labels():
         label_map = {0: 'Benign', 1: 'Malignant'}
-        return dataframe['label'].replace(label_map, inplace=True)
+        dataframe['label'] = dataframe['label'].replace(label_map)
+        return dataframe
 
     # Load Data
     breast_dataset = load_breast_cancer()
@@ -27,10 +27,6 @@ def load_numeric_data():
     clean_labels()
 
     return dataframe
-
-
-def load_images():
-    pass
 
 
 if __name__ == '__main__':
